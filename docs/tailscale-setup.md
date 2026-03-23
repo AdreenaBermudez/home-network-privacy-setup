@@ -4,7 +4,7 @@
 ---
 
 ## What is Tailscale?
-Tailscale creates a secure private network between all your devices no matter where they are. It extends your Pi-hole protection to work everywhere — not just at home.
+Tailscale creates a secure private network between all your devices, no matter where they are. It extends your Pi-hole protection to work everywhere — not just at home.
 
 ---
 
@@ -26,8 +26,8 @@ The command will provide a URL — open it in your browser and sign in with your
 ### Tailscale IP Addresses
 | Device | Tailscale IP | Home IP |
 |---|---|---|
-| Pi1 (Primary) | 100.101.235.58 | 192.168.4.214 |
-| Pi2 (Backup) | 100.109.243.96 | 192.168.4.216 |
+| Pi1 (Primary) | 100.XXX.XXX.XXX | 192.XXX.X.XXX |
+| Pi2 (Backup) | 100.XXX.XXX.XXX | 192.XXX.X.XXX |
 
 ---
 
@@ -36,18 +36,18 @@ The command will provide a URL — open it in your browser and sign in with your
 ### At Home (Home IP)
 | Dashboard | URL |
 |---|---|
-| Pi-hole Pi1 | http://192.168.4.214/admin |
-| Pi-hole Pi2 | http://192.168.4.216/admin |
-| AdGuard Pi1 | http://192.168.4.214:3000 |
-| AdGuard Pi2 | http://192.168.4.216:3000 |
+| Pi-hole Pi1 | http://192.XXX.X.XXX/admin |
+| Pi-hole Pi2 | http://192.XXX.X.XXX/admin |
+| AdGuard Pi1 | http://192.XXX.X.XXX:3000 |
+| AdGuard Pi2 | http://192.XXX.X.XXX:3000 |
 
 ### Remote Access (Tailscale IP)
 | Dashboard | URL |
 |---|---|
-| Pi-hole Pi1 | http://100.101.235.58/admin |
-| Pi-hole Pi2 | http://100.109.243.96/admin |
-| AdGuard Pi1 | http://100.101.235.58:3000 |
-| AdGuard Pi2 | http://100.109.243.96:3000 |
+| Pi-hole Pi1 | http://100.XXX.XXX.XX/admin |
+| Pi-hole Pi2 | http:/100.XXX.XXX.XX/admin |
+| AdGuard Pi1 | http://100.XXX.XXX.XX:3000 |
+| AdGuard Pi2 | http://100.XXX.XXX.XX:3000 |
 
 ---
 
@@ -55,14 +55,14 @@ The command will provide a URL — open it in your browser and sign in with your
 
 ### From Windows
 ```cmd
-ssh YOUR_USER@100.101.235.58
-ssh YOUR_USER@100.109.243.96
+ssh YOUR_USER@100.XXX.XXX.XX
+ssh YOUR_USER@100.XXX.XXX.XX
 ```
 
 ### From Mac/Linux
 ```bash
-ssh YOUR_USER@100.101.235.58
-ssh YOUR_USER@100.109.243.96
+ssh YOUR_USER@100.XXX.XXX.XX
+ssh YOUR_USER@100.XXX.XXX.XX
 ```
 
 ---
@@ -71,8 +71,8 @@ ssh YOUR_USER@100.109.243.96
 
 1. Go to https://login.tailscale.com/admin/dns
 2. Click **Add nameserver → Custom**
-3. Enter Pi1 Tailscale IP: `100.101.235.58`
-4. Add Pi2 as backup: `100.109.243.96`
+3. Enter Pi1 Tailscale IP: `100.XXX.XXX.XX`
+4. Add Pi2 as backup: `100.XXX.XXX.XX`
 5. Enable **Override local DNS** ✅
 
 ---
@@ -80,23 +80,23 @@ ssh YOUR_USER@100.109.243.96
 ## Install on Other Devices
 
 ### iPhone/iPad
-- Download Tailscale from App Store
-- Sign in with GitHub account
+- Download Tailscale from the App Store
+- Sign in with a GitHub account
 - Toggle ON and allow VPN permission
 
 ### Windows
 - Download from https://tailscale.com/download/windows
-- Install and sign in with GitHub account
+- Install and sign in with a GitHub account
 - Enable Launch at Login in Preferences
 
 ### Mac
 - Download from https://tailscale.com/download/mac
-- Sign in with GitHub account
-- Enable Launch at Login in menu bar
+- Sign in with a GitHub account
+- Enable Launch at Login in the menu bar
 
 ### Android
-- Download from Google Play Store
-- Sign in with GitHub account
+- Download from the Google Play Store
+- Sign in with a GitHub account
 - Toggle ON and allow VPN permission
 
 ---
@@ -119,7 +119,7 @@ Should only show Sonic.net with no leaks.
 
 ### Test Ad Blocking
 Visit: https://adblock-tester.com
-Should show 96/100 score.
+Should show a high score.
 
 ---
 
