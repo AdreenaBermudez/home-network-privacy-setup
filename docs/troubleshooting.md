@@ -251,3 +251,68 @@ sudo tail -20 /var/log/pihole/pihole.log
 ```bash
 sudo journalctl -u AdGuardHome --no-pager -n 20
 ```
+
+## Samsung Galaxy S25 Issues
+
+### Internet May Not Be Available / Apps Not Working
+
+**Symptoms:**
+- Internet may not be available warning
+- ADPmobile showing connection not private
+- Elevate showing no internet connection
+- Apps working on mobile data but not WiFi
+
+**Root Cause:**
+Samsung Galaxy S25 with Private DNS set to Automatic
+bypasses Pi-hole DNS completely causing app connectivity
+issues. Also device may get a new IP address after
+network changes causing Pi-hole to not recognize it.
+
+**Fix 1 - Restart Pi-hole FTL**
+Most effective fix - clears DNS cache and reloads
+all whitelist rules:
+```bash
+sudo systemctl restart pihole-FTL
+```
+
+**Fix 2 - Whitelist Android connectivity domains**
+```bash
+pihole allowlist connectivitycheck.gstatic.com
+pihole allowlist connectivitycheck.android.com
+pihole allowlist connectivitycheck.googleapis.com
+pihole allowlist clients3.google.com
+pihole allowlist clients.l.google.com
+pihole allowlist android.clients.google.com
+```
+
+**Fix 3 - Reserve Samsung IP in Eero**
+- Open Eero app
+- Go to Devices
+- Find Samsung Galaxy S25
+- Tap Reserve IP
+- This locks IP 192.168.4.218 permanently to Samsung
+
+**Fix 4 - Set Samsung WiFi to DHCP**
+- Settings → Connections → WiFi
+- Tap gear icon next to network
+- Set IP Settings to DHCP
+- Save and reconnect
+
+**Fix 5 - Verify correct device IP**
+Always verify the correct IP address of the device
+in Eero app before troubleshooting in Pi-hole or
+AdGuard logs.
+
+**Samsung Device Info**
+| Item | Value |
+|---|---|
+| Device | Samsung Galaxy S25 |
+| Reserved IP | 192.168.4.218 |
+| IP Settings | DHCP |
+| Private DNS | Automatic |
+
+**What Fixed It**
+Restarting Pi-hole FTL cleared the DNS cache and
+reloaded the whitelist rules. The Samsung then
+passed the Android connectivity check and all
+apps connected successfully.
